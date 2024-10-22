@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="font-family: sans-serif; background-color: #ada2a2">
+    <h2>Hello User</h2>
+
+    <form action="save.php?id=123" method="post" enctype="multipart/form-data">
+      <div>
+        <label for="your_name">Your Name</label>
+        <input type="text" id="your_name" name="your_name" />
+      </div>
+      <br>
+      <div>
+        <label for="birthday">Your Birthday</label>
+        <input type="date" id="birthday" name="birthday" />
+      </div>
+      <br>
+      <!-- <div>
+        <label for="photo">Your Photo</label>
+        <input type="file" id="photo" name="photo" />
+      </div> -->
+      <hr />
+      <button>Save</button>
+    </form>
+  </body>
+</html>
