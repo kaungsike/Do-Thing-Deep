@@ -27,4 +27,7 @@
  $result = round(($ammount*$from_rate) / $to_rate,2).' '.$to;
 
 
- print_r(json_encode($result));
+ $_POST['result'] = $result;
+
+
+ print_r(json_encode($_POST));
