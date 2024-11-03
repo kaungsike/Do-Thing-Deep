@@ -57,7 +57,7 @@ if (!$con) {
                 <td><?=$row['price'] ?></td>
                 <td><?=$row['stock'] ?></td>
                 <td><?=$row['created_at'] ?></td>
-                <td><a href="">Update</a> | <a href="./delete.php?row_id=<?=$row['id'] ?>">Delete</a></td>
+                <td><a href="./edit.php?row_id=<?=$row['id'] ?>">Update</a> | <a href="./delete.php?row_id=<?=$row['id'] ?>">Delete</a></td>
             </tr>
 
             <?php endwhile; ?>
