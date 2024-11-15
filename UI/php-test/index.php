@@ -41,6 +41,12 @@
                 <a role="tab" class="tab">Gallery</a>
             </div>
         </div>
+
+        <div class="w-full">
+            <form action="">
+                <input type="text" placeholder="Type here" class="focus:outline-none input input-bordered w-full max-w-xs" />
+            </form>
+        </div>
     </main>
 </body>
 
