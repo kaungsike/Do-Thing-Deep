@@ -1,5 +1,3 @@
-
-
 <?php include("./template/header.php") ?>
 <?php include("./template/side-bar.php") ?>
 
@@ -22,27 +20,11 @@
 
     <h2 class="text-2xl font-bold mb-3">Create Product</h2>
 
-    <form action="save.php" method="post">
-        <div class="flex items-center justify-between gap-5">
-            <div class="w-full">
-                <label for="name" class="block text-sm font-medium mb-2 dark:text-white">Name</label>
-                <input type="text" name="name" id="name" required class="outline-none py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Apple">
-            </div>
-            <div class="w-full">
-                <label for="price" class="block text-sm font-medium mb-2 dark:text-white">Price</label>
-                <input type="number" name="price" id="price" required class="outline-none py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="300">
-            </div>
-            <div class="w-full">
-                <label for="stock" class="block text-sm font-medium mb-2 dark:text-white">Stock</label>
-                <input type="number" name="stock" id="stock" required class="outline-none py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="20">
-            </div>
-        </div>
-        <div class="w-full flex justify-end">
-            <button type="submit" class="item-end ml-auto mt-5 mb-5 py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-gray-800 text-white hover:bg-gray-900 focus:outline-none focus:bg-gray-900 disabled:opacity-50 disabled:pointer-events-none dark:bg-white dark:text-neutral-800">
-                Create
-            </button>
-        </div>
-    </form>
+    <div class="mb-5 mt-5">
+        <a href="./batch-create.php" type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-gray-800 text-white hover:bg-gray-900 focus:outline-none focus:bg-gray-900 disabled:opacity-50 disabled:pointer-events-none dark:bg-white dark:text-neutral-800">
+            Add New
+        </a>
+    </div>
 
     <div class="flex flex-col">
         <div class="-m-1.5 overflow-x-auto">
@@ -52,18 +34,23 @@
                         <thead>
                             <tr>
                                 <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">#</th>
-                                <th scope="col" class="text-center px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Name</th>
-                                <th scope="col" class="text-center px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Price</th>
-                                <th scope="col" class="text-center px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Stock</th>
+
+                                <th scope="col" class="text-center px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Bathc Name</th>
+
+                                <th scope="col" class="text-center px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Course</th>
+
+                                <th scope="col" class="text-center px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Start Date</th>
+
+                                <th scope="col" class="text-center px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Time</th>
+                                <th scope="col" class="text-center px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Register</th>
+                                <th scope="col" class="text-center px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Student Limit</th>
                                 <th scope="col" class="text-center px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Created At</th>
                                 <th scope="col" class="text-center px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Action</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
                             <?php
-                            $sql = 'SELECT * FROM products';
-
-
+                            $sql = 'SELECT * FROM batches LEFT JOIN courses ON courses.id = batches.course_id';
                             $query = mysqli_query($con, $sql);
 
                             while ($row = mysqli_fetch_assoc($query)) :
@@ -71,10 +58,42 @@
 
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200"><?= $row['id'] ?></td>
+
                                     <td class="text-center px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"><?= $row['name'] ?></td>
-                                    <td class="text-center px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"><?= $row['price'] ?></td>
-                                    <td class="text-center px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"><?= $row['stock'] ?></td>
-                                    <td class="text-center px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"><?= $row['created_at'] ?></td>
+
+                                    <td class="text-center px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200" title="<?= $row["title"] ?>"><?= $row['short'] ?></td>
+
+                                    <td class="text-center px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"><?= date("d M Y", strtotime($row['start_date'])) ?></td>
+
+                                    <td class="text-center px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"><?= date("gA ", strtotime($row['start_time'])), "-", date(" gA", strtotime($row['end_time'])) ?></td>
+
+                                    <td class="text-center px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">
+                                        <?php if ($row['is_register_open'] == 0) : ?>
+                                            <div>
+                                                <span class="py-1 px-1.5 inline-flex items-center gap-x-1 text-xs font-medium bg-red-100 text-red-800 rounded-full dark:bg-red-500/10 dark:text-red-500">
+                                                    <svg class="shrink-0 size-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                                                        <path d="M12 9v4"></path>
+                                                        <path d="M12 17h.01"></path>
+                                                    </svg>
+                                                    Close
+                                                </span>
+                                            </div>
+                                        <?php else : ?>
+                                            <div>
+                                                <span class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-medium bg-teal-100 text-teal-800 rounded-full dark:bg-teal-500/10 dark:text-teal-500">
+                                                    <svg class="shrink-0 size-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+                                                        <path d="m9 12 2 2 4-4"></path>
+                                                    </svg>
+                                                    Open
+                                                </span>
+                                            </div>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td class="text-center px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"><?= $row['student_limit'] ?></td>
+
+                                    <td class="text-center px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"><?= date("d M Y", strtotime($row['created_at'])) ?></td>
                                     <td class="text-center px-6 py-4 whitespace-nowrap text-sm font-medium">
                                         <div class="inline-flex rounded-lg shadow-sm">
                                             <a href="./product-edit.php?row_id=<?= $row['id'] ?>" type="button" class="py-2 px-3 inline-flex justify-center items-center gap-2 -ms-px first:rounded-s-lg first:ms-0 last:rounded-e-lg text-sm font-medium focus:z-10 border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800 dark:focus:bg-neutral-800">
