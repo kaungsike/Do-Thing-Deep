@@ -2,20 +2,22 @@
 require_once './de_connect.php';
 
 
-// print_r($_POST);
-
 $name = $_POST['name'];
-$price = $_POST['price'];
-$stock = $_POST['stock'];
+$course_id = $_POST['course_id'];
+$start_date = $_POST['start_date'];
+$start_time = $_POST['start_time'];
+$end_time = $_POST['end_time'];
+$register = isset($_POST['register']) ? 1 : 0;
+$student_limit = $_POST['student_limit'];
 
 // sql
 
-$sql = "INSERT INTO products (name,price,stock) VALUES ('$name',$price,$stock)";
+$sql = "INSERT INTO batches (name,course_id,start_date,start_time,end_time,is_register_open,student_limit) VALUES ('$name',$course_id,'$start_date','$start_time','$end_time',$register,$student_limit)";
 
-$query = mysqli_query($con,$sql);
+$query = mysqli_query($con, $sql);
 
-if($query){
-    header('location:product-create-list.php');
+if ($query) {
+    header('location:batch-list.php');
 }
 
 echo $sql;

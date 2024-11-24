@@ -1,18 +1,31 @@
 <?php
-
 require_once './de_connect.php';
 
-$id = $_POST['id'];
+// echo "<pre>";
+
+// print_r($_POST);
+// print_r($_GET);
+
+// die();
+
+
+$id = $_GET['row_id'];
 $name = $_POST['name'];
-$price = $_POST['price'];
-$stock = $_POST['stock'];
+$course_id = $_POST['course_id'];
+$start_date = $_POST['start_date'];
+$start_time = $_POST['start_time'];
+$end_time = $_POST['end_time'];
+$register = isset($_POST['register']) ? 1 : 0;
+$student_limit = $_POST['student_limit'];
 
-$sql = "UPDATE products SET name='$name',price=$price,stock=$stock where id=$id";
+// sql
 
-$query = mysqli_query($con,$sql);
+$sql = "UPDATE batches SET name='$name',course_id=$course_id,start_date='$start_date',start_time='$start_time',end_time='$end_time',is_register_open=$register,student_limit=$student_limit WHERE id=$id";
 
+$query = mysqli_query($con, $sql);
 
-
-if($query){
-    header("location:product-create-list.php");
+if ($query) {
+    header('location:batch-list.php');
 }
+
+echo $sql;
