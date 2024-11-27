@@ -20,10 +20,25 @@
 
     <h2 class="text-2xl font-bold mb-3"> Student Information</h2>
 
-    <div class="mb-5 mt-5">
+    <div class="mb-5 mt-5 w-full flex justify-between">
         <a href="./student-create.php" type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-gray-800 text-white hover:bg-gray-900 focus:outline-none focus:bg-gray-900 disabled:opacity-50 disabled:pointer-events-none dark:bg-white dark:text-neutral-800">
             Add New
         </a>
+
+        <div>
+            <form action="./student-list.php" method="get">
+                <label for="hs-trailing-button-add-on-with-icon" class="sr-only">Label</label>
+                <div class="flex rounded-lg shadow-sm">
+                    <input type="text" id="hs-trailing-button-add-on-with-icon" name="hs-trailing-button-add-on-with-icon" class="py-3 px-4 block w-full border-gray-200 shadow-sm rounded-s-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                    <button type="button" class=" bg-neutral-800 w-[2.875rem] h-[2.875rem] shrink-0 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-e-md border border-transparent  text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <div class="flex flex-col">
@@ -50,7 +65,7 @@
                         </thead>
                         <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
                             <?php
-                            $sql = 'SELECT *,students.id as student_id,gender.id as gender_table_id,nationality.id as nationality_table_id FROM students LEFT JOIN nationality ON nationality.id = students.nationality_id LEFT JOIN gender ON gender.id = students.gender_id LIMIT 5' ;
+                            $sql = 'SELECT *,students.id as student_id,gender.id as gender_table_id,nationality.id as nationality_table_id FROM students LEFT JOIN nationality ON nationality.id = students.nationality_id LEFT JOIN gender ON gender.id = students.gender_id LIMIT 5';
                             $query = mysqli_query($con, $sql);
 
                             while ($row = mysqli_fetch_assoc($query)) :
