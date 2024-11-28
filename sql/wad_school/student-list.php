@@ -1,6 +1,37 @@
 <?php include("./template/header.php") ?>
 <?php include("./template/side-bar.php") ?>
 
+<?php
+$sql = 'SELECT *,students.id as student_id,gender.id as gender_table_id,nationality.id as nationality_table_id FROM students LEFT JOIN nationality ON nationality.id = students.nationality_id LEFT JOIN gender ON gender.id = students.gender_id';
+
+$totalSearchSql = "SELECT count(id) as student_total FROM students";
+
+$totalStudentSql = "SELECT count(id) as student_total FROM students";
+
+
+$totalQuery = mysqli_query($con, $totalStudentSql);
+
+$totalRow = mysqli_fetch_assoc($totalQuery);
+
+if (isset($_GET['q'])) {
+
+    $q = $_GET['q'];
+
+    $sql .= " WHERE name LIKE '%$q%'";
+    $totalSearchSql .= " WHERE name LIKE '%$q%'";
+}
+
+$sql .= " LIMIT 5";
+
+$query = mysqli_query($con, $sql);
+
+$rowCountQuery = mysqli_query($con, $totalSearchSql);
+
+$countRow = mysqli_fetch_assoc($rowCountQuery);
+
+?>
+
+
 <section class="bg-gray-100 p-16 rounded-lg">
     <ol class="flex items-center whitespace-nowrap mb-3">
         <li class="inline-flex items-center">
@@ -26,11 +57,11 @@
         </a>
 
         <div>
-            <form action="./student-list.php" method="get">
+            <form action="./student-list.php?q=" method="get">
                 <label for="hs-trailing-button-add-on-with-icon" class="sr-only">Label</label>
                 <div class="flex rounded-lg shadow-sm">
-                    <input type="text" id="hs-trailing-button-add-on-with-icon" name="hs-trailing-button-add-on-with-icon" class="py-3 px-4 block w-full border-gray-200 shadow-sm rounded-s-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-                    <button type="button" class=" bg-neutral-800 w-[2.875rem] h-[2.875rem] shrink-0 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-e-md border border-transparent  text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                    <input value="<?= isset($_GET['q']) ? $_GET['q'] : '' ?>" required type="text" id="" name="q" class="py-3 px-4 block w-full border-gray-200 shadow-sm rounded-s-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                    <button type="submit" class=" bg-neutral-800 w-[2.875rem] h-[2.875rem] shrink-0 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-e-md border border-transparent  text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
                         <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="11" cy="11" r="8"></circle>
                             <path d="m21 21-4.3-4.3"></path>
@@ -39,6 +70,36 @@
                 </div>
             </form>
         </div>
+    </div>
+
+    <?php if (isset($_GET['q'])) : ?>
+        <div class="w-full text-center mb-5 mt-3 flex justify-between bg-gray-200 p-4 rounded-xl items-center">
+            <p>Showing result search by '<?= $_GET['q'] ?>'</p>
+
+            <a href="./student-list.php" type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-red-500 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
+                Clear <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 stroke-red-500">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+            </a>
+
+
+        </div>
+    <?php endif; ?>
+
+    <div>
+        <?php if ($_GET['q']) : ?>
+
+            <p type="button" class="w-full text-center py-3 px-4 gap-x-2 text-sm font-medium rounded-lg border border-gray-800 text-gray-800 hover:border-gray-500 hover:text-gray-500 focus:outline-none focus:border-gray-500 focus:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:border-white dark:text-white dark:hover:text-neutral-300 dark:hover:border-neutral-300">
+                Total Search Students <?= isset($countRow['student_total']) ? $countRow['student_total'] : '' ?>
+            </p>
+
+        <?php else : ?>
+
+            <p type="button" class="w-full text-center py-3 px-4 gap-x-2 text-sm font-medium rounded-lg border border-gray-800 text-gray-800 hover:border-gray-500 hover:text-gray-500 focus:outline-none focus:border-gray-500 focus:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:border-white dark:text-white dark:hover:text-neutral-300 dark:hover:border-neutral-300">
+                Total Students <?= isset($totalRow['student_total']) ? $countRow['student_total'] : '' ?>
+            </p>
+
+        <?php endif; ?>
     </div>
 
     <div class="flex flex-col">
@@ -64,12 +125,7 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
-                            <?php
-                            $sql = 'SELECT *,students.id as student_id,gender.id as gender_table_id,nationality.id as nationality_table_id FROM students LEFT JOIN nationality ON nationality.id = students.nationality_id LEFT JOIN gender ON gender.id = students.gender_id LIMIT 5';
-                            $query = mysqli_query($con, $sql);
-
-                            while ($row = mysqli_fetch_assoc($query)) :
-                            ?>
+                            <?php while ($row = mysqli_fetch_assoc($query)) : ?>
 
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200"><?= $row['student_id'] ?></td>
