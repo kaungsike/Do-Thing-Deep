@@ -1,28 +1,30 @@
 <?php
 require_once './de_connect.php';
 
-// echo "<pre>";
+echo "<pre>";
 
-// print_r($_POST);
-// print_r($_GET);
-// die();
+print_r($_POST);
+print_r($_GET);
+
 $id = $_GET['row_id'];
 $name = $_POST['name'];
-$course_id = $_POST['course_id'];
-$start_date = $_POST['start_date'];
-$start_time = $_POST['start_time'];
-$end_time = $_POST['end_time'];
-$register = isset($_POST['register']) ? 1 : 0;
-$student_limit = $_POST['student_limit'];
+$date_of_birth = $_POST['date_of_birth'];
+$nationality_id= $_POST['nationality_id'];
+$gender_id = isset($_POST['gender_id'])? $_POST['gender_id'] : 1;
+$pocket_money = $_POST['pocket_money'];
+
+// echo $nationality_id;
+
+// die();
 
 // sql
 
-$sql = "update batches set name='$name',course_id=$course_id,start_date='$start_date',start_time='$start_time',end_time='$end_time',is_register_open=$register,student_limit=$student_limit where id=$id";
+$sql = "update students set name='$name',date_of_birth='$date_of_birth',nationality_id=$nationality_id,gender_id=$gender_id,pocket_money=$pocket_money where id=$id";
 
 $query = mysqli_query($con, $sql);
 
 if ($query) {
-    header('location:batch-list.php');
+    header('location:student-list.php');
 }
 
 echo $sql;
