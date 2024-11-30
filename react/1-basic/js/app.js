@@ -20,9 +20,9 @@
 //     total += point;
 // }
 
-const uniqueArray = new Set(points);
+// const uniqueArray = new Set(points);
 
-console.log(uniqueArray);
+// console.log(uniqueArray);
 
 // for(let point of points){
 //     // console.log(point);
@@ -31,9 +31,16 @@ console.log(uniqueArray);
 //     }
 // }
 
-const total = points.reduce((pv,cv) => pv+cv,0)
+// const total = points.reduce((pv,cv) => pv+cv,0)
 
 
 // console.log(uniqueArray);
 
+// points.push("aaa");
+// points.push("bbb");
+// points.push("ccc");
 
+const newPoints = [...points,"aaa"];
+
+console.log(points);
+console.log(newPoints);
