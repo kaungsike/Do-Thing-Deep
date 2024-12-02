@@ -11,8 +11,8 @@ const Stars = ({ rate , id}) => {
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        className="size-4 fill-yellow-400 stroke-yellow-400"
-        key={id}
+        className="size-5 fill-yellow-400 stroke-yellow-400"
+        key={i}
       >
         <path
           strokeLinecap="round"
