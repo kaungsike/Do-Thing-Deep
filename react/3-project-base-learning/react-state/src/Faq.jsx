@@ -1,26 +1,25 @@
 import React, { useState } from "react";
 
-const Faq = ({ question }) => {
-  const [open, setOpen] = useState(false);
+const Faq = ({ question : {id,question,answer,isOpen},handleOpen }) => {
 
-  const handleOpen = () => {
-    setOpen(!open);
+  const handleToggle = () => {
+    handleOpen(id)
   };
 
   return (
     <div className="w-full">
       <p
-        onClick={handleOpen}
+        onClick={handleToggle}
         className="border flex justify-between items-center select-none border-gray-400 p-3 active:scale-[98%] duration-200"
       >
-        {question.question}{" "}
+        {question}{" "}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className={`size-4 duration-300 ${open && 'rotate-180'}`}
+          className={`size-4 duration-300 ${isOpen && 'rotate-180'}`}
         >
           <path
             strokeLinecap="round"
@@ -31,10 +30,10 @@ const Faq = ({ question }) => {
       </p>
       <p
         className={`border scale-[99%] bg-gray-200 duration-150 border-gray-400 p-3 ${
-          !open && "hidden"
+          !isOpen && "hidden"
         }`}
       >
-        {question.answer}
+        {answer}
       </p>
     </div>
   );

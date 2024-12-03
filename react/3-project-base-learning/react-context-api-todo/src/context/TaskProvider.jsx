@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import Heading from "./components/Heading";
-import CreateTest from "./components/CreateTask";
-import TestList from "./components/TaskList";
+import TaskContext from "./TaskContext";
 
-const App = () => {
+const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState([
     { id: 1, job: "Complete SAD homework", isDone: false },
     { id: 2, job: "Install php", isDone: true },
@@ -21,17 +19,13 @@ const App = () => {
 
   const doneTask = (id) => {
     setTasks(
-      tasks.map((task) => task.id==id? {...task, isDone : !task.isDone} : task)
+      tasks.map((task) =>
+        task.id == id ? { ...task, isDone: !task.isDone } : task
+      )
     );
   };
 
-  return (
-    <div className="p-10 bg-gray-100 w-[500px] mx-auto mt-[100px] rounded ">
-      <Heading />
-      <CreateTest addTask={addTask} />
-      <TestList doneTask={doneTask} removeTask={removeTask} tasks={tasks} />
-    </div>
-  );
+  return <TaskContext.Provider value={{tasks,addTask,removeTask,doneTask}}>{children}</TaskContext.Provider>;
 };
 
-export default App;
+export default TaskProvider;

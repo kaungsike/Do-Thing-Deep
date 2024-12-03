@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Task from "./Task";
+import TaskContext from "../context/TaskContext";
 
-const TaskList = ({ tasks, removeTask, doneTask }) => {
+const TaskList = () => {
+
+  const {tasks} = useContext(TaskContext);
+
   return (
     <div>
       <div className="mb-5 flex items-center justify-between">
@@ -14,8 +18,6 @@ const TaskList = ({ tasks, removeTask, doneTask }) => {
       <div className="flex flex-col gap-2">
         {tasks.map((task) => (
           <Task
-            doneTask={doneTask}
-            removeTask={removeTask}
             key={task.id}
             task={task}
           />
