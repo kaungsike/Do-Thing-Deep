@@ -1,10 +1,14 @@
 import React, { useContext, useState } from "react";
 import Task from "./Task";
-import TaskContext from "../context/TaskContext";
+import useTaskStore from "../store/useTaskStore";
+// import TaskContext from "../context/TaskContext";
 
 const TaskList = () => {
+  // const {tasks} = useContext(TaskContext);
 
-  const {tasks} = useContext(TaskContext);
+  const {tasks} = useTaskStore();
+
+  // console.log(tasks);
 
   return (
     <div>
@@ -17,10 +21,7 @@ const TaskList = () => {
       </div>
       <div className="flex flex-col gap-2">
         {tasks.map((task) => (
-          <Task
-            key={task.id}
-            task={task}
-          />
+          <Task key={task.id} task={task} />
         ))}
       </div>
     </div>

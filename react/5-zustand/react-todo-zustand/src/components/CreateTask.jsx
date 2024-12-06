@@ -1,12 +1,15 @@
 import React, { useContext, useState } from "react";
 import TaskContext from "../context/TaskContext";
+import useTaskStore from "../store/useTaskStore";
 
 const CreateTask = () => {
 
-  const {addTask} = useContext(TaskContext);
+  // const {addTask} = useContext(TaskContext);
 
 
   const [task, setTask] = useState("");
+
+  const {addTask} = useTaskStore();
 
   const handleAdd = () => {
 
