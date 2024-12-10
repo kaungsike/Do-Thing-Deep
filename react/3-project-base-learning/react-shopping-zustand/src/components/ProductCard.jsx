@@ -27,7 +27,7 @@ const ProductCard = ({ product }) => {
   }
 
   const handleOpenDetail = () => {
-    nevigate(`/product-detail/${product.id}`)
+    nevigate(`/product-detail/${product.slug}`)
   }
 
   return (
