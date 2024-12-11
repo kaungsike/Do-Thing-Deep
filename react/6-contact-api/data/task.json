@@ -1,0 +1,49 @@
+{
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Create homepage",
+        "description": "Design and implement the homepage for the website.",
+        "status": "Not Started",
+        "priority": "High",
+        "due_date": "2024-12-15",
+        "assigned_to": 101,
+        "project_id": 201
+      },
+      {
+        "id": 2,
+        "title": "Build contact page",
+        "description": "Develop the contact form and page layout.",
+        "status": "Not Started",
+        "priority": "Medium",
+        "due_date": "2024-12-20",
+        "assigned_to": 102,
+        "project_id": 201
+      }
+    ],
+    "users": [
+      {
+        "id": 101,
+        "name": "Alice Johnson",
+        "email": "alice.johnson@example.com",
+        "role": "Designer"
+      },
+      {
+        "id": 102,
+        "name": "Bob Smith",
+        "email": "bob.smith@example.com",
+        "role": "Developer"
+      }
+    ],
+    "projects": [
+      {
+        "id": 201,
+        "name": "Website Creation",
+        "description": "A project to create a simple informational website.",
+        "start_date": "2024-12-01",
+        "end_date": "2024-12-31",
+        "status": "Active"
+      }
+    ]
+  }
+  
