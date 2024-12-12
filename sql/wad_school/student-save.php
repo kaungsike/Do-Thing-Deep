@@ -1,23 +1,27 @@
 <?php
 require_once './de_connect.php';
 
+// echo "<pre>";
+
+// print_r($_POST);
+
+// die();
+
 
 $name = $_POST['name'];
-$course_id = $_POST['course_id'];
-$start_date = $_POST['start_date'];
-$start_time = $_POST['start_time'];
-$end_time = $_POST['end_time'];
-$register = isset($_POST['register']) ? 1 : 0;
-$student_limit = $_POST['student_limit'];
+$date_of_birth = $_POST['date_of_birth'];
+$nation = $_POST['nation'];
+$gender = $_POST['gender'];
+$pocket_money = $_POST['pocket_money'];
 
 // sql
 
-$sql = "INSERT INTO batches (name,course_id,start_date,start_time,end_time,is_register_open,student_limit) VALUES ('$name',$course_id,'$start_date','$start_time','$end_time',$register,$student_limit)";
+$sql = "INSERT INTO students (name,date_of_birth,nationality_id,gender_id,pocket_money) VALUES ('$name','$date_of_birth',$nation,$gender,$pocket_money)";
 
 $query = mysqli_query($con, $sql);
 
 if ($query) {
-    header('location:batch-list.php');
+    header('location:student-list.php');
 }
 
 echo $sql;

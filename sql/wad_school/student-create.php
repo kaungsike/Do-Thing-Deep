@@ -29,7 +29,7 @@
 
     <h2 class="text-2xl font-bold mb-3">Add Student</h2>
 
-    <form action="./batch-save.php" method="post">
+    <form action="./student-save.php" method="post">
         <div class="flex flex-col items-center justify-between gap-5">
             <div class="w-full">
                 <label for="name" class="block text-sm font-medium mb-2 dark:text-white">Name</label>

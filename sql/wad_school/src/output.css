@@ -938,6 +938,10 @@ video {
   flex-wrap: nowrap;
 }
 
+.items-start {
+  align-items: flex-start;
+}
+
 .items-center {
   align-items: center;
 }
@@ -1200,6 +1204,10 @@ video {
   fill: #000;
 }
 
+.stroke-green-500 {
+  stroke: #22c55e;
+}
+
 .stroke-red-500 {
   stroke: #ef4444;
 }
@@ -1210,14 +1218,6 @@ video {
 
 .stroke-red-700 {
   stroke: #b91c1c;
-}
-
-.stroke-green-400 {
-  stroke: #4ade80;
-}
-
-.stroke-green-500 {
-  stroke: #22c55e;
 }
 
 .p-1\.5 {

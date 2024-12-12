@@ -1,10 +1,13 @@
 <?php
 
-require_once "./db_connect.php";
+require_once './de_connect.php';
+
 
 
 
 // print_r($_POST);
+
+// die();
 
 $student_id = $_POST["student_id"];
 $batch_id = $_POST["batch_id"];
@@ -14,7 +17,7 @@ $batch_id = $_POST["batch_id"];
 
 $sql = "INSERT INTO enrollments (student_id,batch_id) VALUES ($student_id,$batch_id)";
 
-$query = mysqli_query($conn, $sql); // working stage
+$query = mysqli_query($con, $sql); // working stage
 
 if ($query) {
     header("Location:enroll-list.php");
