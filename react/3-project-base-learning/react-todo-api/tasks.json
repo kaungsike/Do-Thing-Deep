@@ -1,0 +1,29 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "job": "Complete SAD homework",
+      "isDone": false
+    },
+    {
+      "id": 2,
+      "job": "Install php",
+      "isDone": true
+    },
+    {
+      "id": 3,
+      "job": "Sleep early",
+      "isDone": false
+    },
+    {
+      "id": 4,
+      "job": "Learn react",
+      "isDone": false
+    },
+    {
+      "job": "Me",
+      "isDone": false,
+      "id": 5
+    }
+  ]
+}
