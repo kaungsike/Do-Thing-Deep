@@ -3,16 +3,11 @@
     {
       "id": 1,
       "job": "Complete SAD homework",
-      "isDone": false
+      "isDone": true
     },
     {
       "id": 2,
       "job": "Install php",
-      "isDone": true
-    },
-    {
-      "id": 3,
-      "job": "Sleep early",
       "isDone": true
     }
   ]

@@ -3,12 +3,12 @@ import React from "react";
 const Task = ({ task: { id, job, isDone }, removeTask , doneTask }) => {
   const handleDelete = () => {
     if (confirm("Are you sure to delete?")) {
-      removeTask(id);
+      removeTask(id,isDone);
     }
   };
 
   const handleCheckBox = () => {
-    doneTask(id,isDone)
+    doneTask(id)
   };
 
   return (
