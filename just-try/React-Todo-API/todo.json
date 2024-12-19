@@ -9,6 +9,11 @@
       "id": 2,
       "job": "Install php",
       "isDone": true
+    },
+    {
+      "id": 1734639101607,
+      "job": "Finish",
+      "isDone": true
     }
   ]
 }

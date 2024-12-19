@@ -1,8 +1,20 @@
 <?php include("./src/template/header.php") ?>
-
+<?php require_once("./sql-connection.php") ?>
 
 <!-- Wrapper Container -->
 <div class="flex flex-col lg:flex-row min-h-screen">
+
+<?php
+
+$id = $_GET['id'];
+
+$sql = "select * from students where id='$id'";
+
+$query = mysqli_query($con,$sql);
+
+$student = mysqli_fetch_assoc($query);
+
+?>
 
 
     <!-- Main Content -->
@@ -16,8 +28,8 @@
 
             <!-- Profile Info -->
             <div class="mt-4 md:mt-0 md:ml-6 flex-1 text-center md:text-left">
-                <h2 class="text-3xl font-bold text-gray-900">John Doe</h2>
-                <p class="text-gray-500 mt-1">johndoe@example.com</p>
+                <h2 class="text-3xl font-bold text-gray-900"><?=$student['name'] ?></h2>
+                <p class="text-gray-500 mt-1"><?=$student['edu_mail'] ?></p>
                 <p class="text-gray-700 mt-2">Blockchain Validator | Developer</p>
             </div>
 
