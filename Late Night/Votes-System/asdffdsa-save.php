@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include("./sql-connection.php");
 
@@ -12,14 +12,12 @@ $password = $_POST['password'];
 
 $sql = "select * from admin where email='$email' and password='$password'";
 
-$query = mysqli_query($con,$sql);
+$query = mysqli_query($con, $sql);
 
 $data = mysqli_fetch_assoc($query);
 
-if($data){
+if ($data) {
   header("location:asdffdsa-profile.php");
-}else{
-    echo "False";
+} else {
+  header("location:asdffdsa-login-fail.php");
 }
-
-?>

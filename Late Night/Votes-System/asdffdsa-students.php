@@ -14,7 +14,7 @@
     <div class="bg-white p-6 rounded-lg shadow">
         <div class="flex justify-between items-center mb-4">
             <h2 class="text-lg font-semibold text-gray-700">Manage Students</h2>
-            <button class="px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600">Add New Student</button>
+            <a href="./asdffdsa-add-student.php" class="px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600">Add New Student</a>
         </div>
 
         <?php
