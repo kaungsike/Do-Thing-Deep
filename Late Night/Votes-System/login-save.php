@@ -12,12 +12,18 @@ $password = $_POST['password'];
 
 $sql = "select * from students where edu_mail='$edu_mail' and password='$password'";
 
-$query = mysqli_query($con,$sql);
+$query = mysqli_query($con, $sql);
 
 $student = mysqli_fetch_assoc($query);
 
-if($query){
-    $endPoint = "profile.php?id=".$student['id'];
-    header("location:$endPoint");
-}
+// die();
 
+if ($student) {
+    $endPoint = "profile.php?id=" . $student['id'];
+    header("location:$endPoint");
+} else {
+    echo "<script>
+        alert(`Please check your username and password and try again. If you've forgotten your password, use the 'Forgot Password' link.`);
+        location.href='./login.php';
+    </script>";
+}

@@ -1,91 +1,109 @@
 <?php include("./src/template/header.php") ?>
+
 <?php require_once("./sql-connection.php") ?>
 
-<!-- Wrapper Container -->
-<div class="flex flex-col lg:flex-row min-h-screen">
-
-<?php
-
-$id = $_GET['id'];
-
-$sql = "select * from students where id='$id'";
-
-$query = mysqli_query($con,$sql);
-
-$student = mysqli_fetch_assoc($query);
-
-?>
-
-
-    <!-- Main Content -->
-    <main class="flex-1 p-6 bg-gray-50">
-        <!-- Profile Card -->
-        <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row items-center md:items-start">
-            <!-- Profile Picture -->
-            <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-orange-500">
-                <img src="./profile.jpg" alt="User Avatar" class="w-full h-full object-cover">
-            </div>
-
-            <!-- Profile Info -->
-            <div class="mt-4 md:mt-0 md:ml-6 flex-1 text-center md:text-left">
-                <h2 class="text-3xl font-bold text-gray-900"><?=$student['name'] ?></h2>
-                <p class="text-gray-500 mt-1"><?=$student['edu_mail'] ?></p>
-                <p class="text-gray-700 mt-2">Blockchain Validator | Developer</p>
-            </div>
-
-            <!-- Buttons -->
-            <div class="flex flex-col mt-4 md:mt-0 space-y-2">
-                <button class="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600">
-                    Edit Profile
-                </button>
-                <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300">
-                    View Projects
-                </button>
+<div class="flex flex-col md:flex-row h-screen">
+    <!-- Sidebar -->
+    <aside class="bg-orange-50 text-black rounded-r-xl w-[300px]  h-20 md:h-full flex md:flex-col items-center md:items-start p-4">
+        <div class="flex items-center justify-center md:justify-start space-x-2 mb-4 md:mb-8">
+            <img src="./k.jpg" alt="Profile" class="rounded-full h-12 w-12">
+            <div>
+                <h1 class="text-lg font-bold">Juan Dela Cruz</h1>
+                <a href="#" class="text-sm">kaungsike9@gmail.com</a>
             </div>
         </div>
+        <nav class="hidden md:block w-full">
+            <ul class="space-y-4">
+                <li><a href="#" class="block px-4 py-2 rounded hover:bg-blue-800">Dashboard</a></li>
+                <li><a href="#" class="block px-4 py-2 rounded hover:bg-blue-800">Vote</a></li>
+                <li><a href="#" class="block px-4 py-2 rounded hover:bg-blue-800">Voters Guideline</a></li>
+                <li><a href="#" class="block px-4 py-2 rounded hover:bg-blue-800">Settings</a></li>
+                <li><a href="#" class="block px-4 py-2 rounded hover:bg-blue-800">Log out</a></li>
+            </ul>
+        </nav>
+    </aside>
 
-        <!-- Stats Section -->
-        <section class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Card 1 -->
-            <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                <p class="text-4xl font-bold text-orange-500">24</p>
-                <p class="text-gray-600 mt-2">Nodes</p>
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto p-4">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-8">
+            <h2 class="text-2xl font-bold">Profile</h2>
+            <button class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Edit</button>
+        </header>
+
+        <!-- Profile Section -->
+        <section class="bg-white shadow rounded-lg p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Profile Picture -->
+            <div class="text-center">
+                <img src="https://via.placeholder.com/100" alt="Profile" class="rounded-full mx-auto mb-4">
+                <div class="space-x-4">
+                    <button class="bg-gray-200 px-4 py-2 rounded hover:bg-gray-300">Upload</button>
+                    <button class="bg-gray-200 px-4 py-2 rounded hover:bg-gray-300">Remove</button>
+                </div>
             </div>
-            <!-- Card 2 -->
-            <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                <p class="text-4xl font-bold text-orange-500">120</p>
-                <p class="text-gray-600 mt-2">Connections</p>
+
+            <!-- Editable Profile Information -->
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-bold mb-1">First Name</label>
+                    <input type="text" value="Juan" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold mb-1">Middle Name</label>
+                    <input type="text" value="Salazar" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold mb-1">Last Name</label>
+                    <input type="text" value="Dela Cruz" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
+                </div>
             </div>
-            <!-- Card 3 -->
-            <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                <p class="text-4xl font-bold text-orange-500">5</p>
-                <p class="text-gray-600 mt-2">Projects</p>
+        </section>
+
+        <!-- Additional Details -->
+        <section class="mt-8 bg-white shadow rounded-lg p-6">
+            <h3 class="text-lg font-bold mb-4">Details</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Birthday -->
+                <div>
+                    <label class="block text-sm font-bold mb-1">Birthday</label>
+                    <input type="text" value="January 1, 2000" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
+                </div>
+                <!-- Contact Number -->
+                <div>
+                    <label class="block text-sm font-bold mb-1">Contact Number</label>
+                    <input type="text" value="+63 912 345 6789" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
+                </div>
+                <!-- Email -->
+                <div>
+                    <label class="block text-sm font-bold mb-1">Email</label>
+                    <input type="email" value="juan.delacruz@email.com" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
+                </div>
+                <!-- Organization -->
+                <div>
+                    <label class="block text-sm font-bold mb-1">Organization</label>
+                    <input type="text" value="System Development" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
+                </div>
+            </div>
+
+            <!-- Address -->
+            <h4 class="text-lg font-bold mt-8 mb-4">Current Address</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-sm font-bold mb-1">Province</label>
+                    <input type="text" value="Pangasinan" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold mb-1">Barangay</label>
+                    <input type="text" value="Mayombo" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold mb-1">City/Municipality</label>
+                    <input type="text" value="Dagupan City" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
+                </div>
             </div>
         </section>
     </main>
 </div>
-
-<!-- Footer -->
-<footer class="bg-white text-center py-4 text-gray-600 text-sm mt-6 lg:mt-0">
-    &copy; 2024 OverProtocol. All rights reserved.
-</footer>
-
-<!-- Dropdown Script -->
-<script>
-    const dropdownButton = document.getElementById('dropdownButton');
-    const dropdownMenu = document.getElementById('dropdownMenu');
-
-    dropdownButton.addEventListener('click', () => {
-        dropdownMenu.classList.toggle('hidden');
-    });
-
-    // Optional: Close dropdown if clicked outside
-    document.addEventListener('click', (event) => {
-        if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
-            dropdownMenu.classList.add('hidden');
-        }
-    });
-</script>
 
 
 <?php include("./src/template/footer.php") ?>

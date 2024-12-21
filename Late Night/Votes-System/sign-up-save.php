@@ -4,9 +4,9 @@
 include("./sql-connection.php");
 
 
-echo "<pre>";
+// echo "<pre>";
 
-print_r($_POST);
+// print_r($_POST);
 
 
 $name = $_POST['name'];
@@ -19,29 +19,44 @@ $sql = "select * from students where edu_mail='$edu_mail'";
 
 // echo $sql;
 
-$query = mysqli_query($con,$sql);
+$query = mysqli_query($con, $sql);
 
 $data = mysqli_fetch_assoc($query);
 
-if($data){
+// print_r($data);
 
-    $sign_up_sql = "update students set name='$name',password='$password' where students.edu_mail='$edu_mail'";
+// echo $data['password'];
 
-    // echo $sign_up_sql;
-    $sign_up_query = mysqli_query($con,$sign_up_sql);
+// var_dump($data['password']);
 
-    if($sign_up_query){
-        header("location:login.php");
+// die();
+
+if ($data) {
+
+    if ($data['password'] !== NULL && $data['password'] !=="") {
+        echo "<script>
+        alert('This edu mail already has an account.');
+        window.location.href = 'sign-up.php';
+    </script>";
+    } else {
+
+        $sign_up_sql = "update students set name='$name',password='$password' where students.edu_mail='$edu_mail'";
+
+        // echo $sign_up_sql;
+        $sign_up_query = mysqli_query($con, $sign_up_sql);
+
+        if ($sign_up_query) {
+
+            echo "<script>
+            alert('Sign up successful.');
+            location.href='login.php';
+            </script>";
+        }
     }
-
-
-
-}else{
+} else {
     echo "Email not found";
 }
 
 
 
 // echo $sql;
-
-

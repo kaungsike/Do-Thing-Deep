@@ -1,8 +1,8 @@
 <?php include("./src/template/header.php") ?>
 
 
- <div class="flex items-center justify-center min-h-screen bg-white">
-        <div class="bg-gray-50 shadow-lg rounded-lg p-8 w-full max-w-md">
+ <div class="flex flex-grow items-center justify-center bg-white">
+        <div class="bg-gray-50 rounded-lg p-8 w-full max-w-md">
             <h1 class="text-2xl font-bold text-gray-900 mb-6 text-center">
                 Register to <span class="text-orange-500">Vote Me</span>
             </h1>
@@ -35,7 +35,7 @@
             </form>
             <p class="text-center text-gray-600 text-sm mt-4">
                 Already have an account? 
-                <a href="#" class="text-orange-500 hover:underline">Login</a>
+                <a href="./login.php" class="text-orange-500 hover:underline">Login</a>
             </p>
         </div>
     </div>

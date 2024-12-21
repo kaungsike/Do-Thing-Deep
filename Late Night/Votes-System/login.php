@@ -5,7 +5,7 @@
     <div class="bg-gray-50 shadow-lg rounded-lg p-8 w-full max-w-md">
         <!-- Title -->
         <h1 class="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Welcome Back to <span class="text-orange-500">OverProtocol</span>
+            Welcome Back to <br> Let Make a <span class="text-orange-500">Vote</span>
         </h1>
 
         <!-- Login Form -->
@@ -26,10 +26,6 @@
 
             <!-- Remember Me -->
             <div class="flex items-center justify-between">
-                <label class="inline-flex items-center">
-                    <input type="checkbox" class="text-orange-500 focus:ring-orange-500">
-                    <span class="ml-2 text-gray-700 text-sm">Remember me</span>
-                </label>
                 <a href="#" class="text-orange-500 text-sm hover:underline">Forgot password?</a>
             </div>
 
@@ -43,7 +39,7 @@
         <!-- Footer -->
         <p class="text-center text-gray-600 text-sm mt-4">
             Don't have an account?
-            <a href="#" class="text-orange-500 hover:underline">Register</a>
+            <a href="./sign-up.php" class="text-orange-500 hover:underline">Register</a>
         </p>
     </div>
 </div>
