@@ -15,7 +15,7 @@
         <nav class="hidden md:block w-full">
             <ul class="space-y-4">
                 <li><a href="#" class="block px-4 py-2 rounded hover:bg-blue-800">Dashboard</a></li>
-                <li><a href="#" class="block px-4 py-2 rounded hover:bg-blue-800">Vote</a></li>
+                <li><a href="./vote.php" class="block px-4 py-2 rounded hover:bg-blue-800">Vote</a></li>
                 <li><a href="#" class="block px-4 py-2 rounded hover:bg-blue-800">Voters Guideline</a></li>
                 <li><a href="#" class="block px-4 py-2 rounded hover:bg-blue-800">Settings</a></li>
                 <li><a href="#" class="block px-4 py-2 rounded hover:bg-blue-800">Log out</a></li>
