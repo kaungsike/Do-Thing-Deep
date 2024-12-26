@@ -61,7 +61,7 @@ try {
 
     if (!mysqli_query($con, $sql_add_new_user)) {
         throw new Exception("Failed to insert new user: " . mysqli_error($con));
-    }q
+    }
 
     mysqli_commit($con);
 
