@@ -7,16 +7,15 @@ echo "<pre>";
 
 print_r($_POST);
 
-$edu_mail = $_POST['edu_mail'];
+$email = $_POST['email'];
 $password = $_POST['password'];
 
-$sql = "select * from students where edu_mail='$edu_mail' and password='$password'";
+
+$sql = "select * from users where email='$email' and password='$password'";
 
 $query = mysqli_query($con, $sql);
 
 $student = mysqli_fetch_assoc($query);
-
-// die();
 
 if ($student) {
     $endPoint = "profile.php?id=" . $student['id'];

@@ -4,7 +4,9 @@
 
 <!-- Page Content -->
 <div class="h-screen flex items-center justify-center">
-    <h1 class="text-4xl font-semibold text-gray-700">Your Page Content</h1>
+    <div>
+        <img src="./undraw_choose-card_es1o.svg" alt="">
+    </div>
 </div>
 
 <script>

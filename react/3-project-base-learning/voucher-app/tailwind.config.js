@@ -4,7 +4,11 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
+    fontFamily: {
+      sans: ["Parkinsans","Noto Sans Myanmar", "sans-serif"],
+    },
     extend: {},
   },
   plugins: [],

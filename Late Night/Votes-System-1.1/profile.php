@@ -2,96 +2,83 @@
 
 <?php require_once("./sql-connection.php") ?>
 
-<div class="flex flex-col md:flex-row h-screen">
-    <aside class="bg-orange-50 text-black rounded-r-xl w-[300px]  h-20 md:h-full flex md:flex-col items-center md:items-start p-4">
-        <div class="flex items-center justify-center md:justify-start space-x-2 mb-4 md:mb-8">
-            <img src="./k.jpg" alt="Profile" class="rounded-full h-12 w-12">
-            <div>
-                <h1 class="text-lg font-bold">Juan Dela Cruz</h1>
-                <a href="#" class="text-sm">kaungsike9@gmail.com</a>
-            </div>
+
+<?php
+
+$id = $_GET['id'];
+
+if (!$id) {
+    echo "<script>
+        alert('Invalid user id.');
+        location.href = './login.php';
+    </script>";
+    exit;
+}
+
+$sql = "SELECT * FROM users WHERE id=$id";
+
+$query = mysqli_query($con, $sql);
+
+$user = mysqli_fetch_assoc($query);
+
+if (!$user) {
+    echo "<script>
+        alert('User not found.');
+        location.href = './login.php';
+    </script>";
+    exit;
+}
+
+
+?>
+
+<div class="flex flex-col gap-10 md:flex-row h-screen">
+  <aside class="bg-orange-100 text-black rounded-r-3xl w-[300px]  h-20 md:h-full flex md:flex-col items-center md:items-start pr-5">
+    <div class="flex items-center ml-5 mt-5 justify-center md:justify-start space-x-2 mb-4 md:mb-8">
+      <img src="./k.jpg" alt="Profile" class="rounded-full h-12 w-12">
+      <div>
+        <h1 class="text-lg font-bold"><?=$user['name'] ?></h1>
+        <a href="#" class="text-sm"><?=$user['email'] ?></a>
+      </div>
+    </div>
+    <nav class="hidden md:block w-full">
+      <ul class="space-y-4">
+      <li><a href="./vote.php" class="block px-5 py-2 rounded bg-orange-500 text-white duration-150 rounded-r-full">Profile</a></li>
+        <li><a href="#" class="block px-5 py-2 rounded hover:bg-orange-500 hover:text-white duration-150 rounded-r-full">Dashboard</a></li>
+        <li><a href="./vote.php" class="block px-5 py-2 rounded hover:bg-orange-500 hover:text-white duration-150 rounded-r-full">Vote</a></li>
+        <li><a href="#" class="block px-5 py-2 rounded duration-150 rounded-r-full">Voters Guideline</a></li>
+        <li><a href="#" class="block px-5 py-2 rounded hover:bg-orange-500 hover:text-white duration-150 rounded-r-full">Settings</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="overflow-y-auto p-4 w-full flex flex-col gap-5">
+    <h1 class="xl:text-2xl text-orange-500 font-bold">
+      YOU MAY NOW CAST YOUR VOTES!
+    </h1>
+
+
+    <div class="border border-black w-full flex-grow">
+
+
+      <div class="border border-black xl:w-[250px] p-3 rounded-xl xl:h-[350px] gap-4 flex flex-col items-center justify-between">
+        <div class="avatar">
+          <div class="w-24 rounded-full">
+            <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+          </div>
         </div>
-        <nav class="hidden md:block w-full">
-            <ul class="space-y-4">
-                <li><a href="#" class="block px-4 py-2 rounded hover:bg-blue-800">Dashboard</a></li>
-                <li><a href="./vote.php" class="block px-4 py-2 rounded hover:bg-blue-800">Vote</a></li>
-                <li><a href="#" class="block px-4 py-2 rounded hover:bg-blue-800">Voters Guideline</a></li>
-                <li><a href="#" class="block px-4 py-2 rounded hover:bg-blue-800">Settings</a></li>
-                <li><a href="#" class="block px-4 py-2 rounded hover:bg-blue-800">Log out</a></li>
-            </ul>
-        </nav>
-    </aside>
 
-    <main class="flex-1 overflow-y-auto p-4">
-        <header class="flex justify-between items-center mb-8">
-            <h2 class="text-2xl font-bold">Profile</h2>
-            <button class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Edit</button>
-        </header>
-
-        <section class="bg-white shadow rounded-lg p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div class="text-center">
-                <img src="https://via.placeholder.com/100" alt="Profile" class="rounded-full mx-auto mb-4">
-                <div class="space-x-4">
-                    <button class="bg-gray-200 px-4 py-2 rounded hover:bg-gray-300">Upload</button>
-                    <button class="bg-gray-200 px-4 py-2 rounded hover:bg-gray-300">Remove</button>
-                </div>
-            </div>
-
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-sm font-bold mb-1">First Name</label>
-                    <input type="text" value="Juan" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold mb-1">Middle Name</label>
-                    <input type="text" value="Salazar" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold mb-1">Last Name</label>
-                    <input type="text" value="Dela Cruz" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
-                </div>
-            </div>
-        </section>
-
-        <section class="mt-8 bg-white shadow rounded-lg p-6">
-            <h3 class="text-lg font-bold mb-4">Details</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label class="block text-sm font-bold mb-1">Birthday</label>
-                    <input type="text" value="January 1, 2000" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold mb-1">Contact Number</label>
-                    <input type="text" value="+63 912 345 6789" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold mb-1">Email</label>
-                    <input type="email" value="juan.delacruz@email.com" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold mb-1">Organization</label>
-                    <input type="text" value="System Development" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
-                </div>
-            </div>
-
-            <h4 class="text-lg font-bold mt-8 mb-4">Current Address</h4>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label class="block text-sm font-bold mb-1">Province</label>
-                    <input type="text" value="Pangasinan" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold mb-1">Barangay</label>
-                    <input type="text" value="Mayombo" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold mb-1">City/Municipality</label>
-                    <input type="text" value="Dagupan City" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
-                </div>
-            </div>
-        </section>
-    </main>
+        <div class="w-full flex-grow flex flex-col items-center">
+          <p class="text-xl font-bold">Su Su</p>
+          <p>NO. 1</p>
+          <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor minima nostrum.</p>
+          <div class="flex items-center w-full justify-evenly mt-auto">
+            <button class="btn btn-outline hover:bg-orange-500 hover:border-orange-500 w-full">Vote</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 </div>
-
 
 <?php include("./src/template/footer.php") ?>

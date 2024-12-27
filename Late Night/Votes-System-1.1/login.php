@@ -12,8 +12,8 @@
         <form action="login-save.php" method="POST" class="space-y-4">
             <!-- Email -->
             <div>
-                <label for="email" class="block text-gray-700 font-medium mb-1">EDU mail</label>
-                <input type="email" id="email" name="edu_mail" placeholder="Your email address"
+                <label for="email" class="block text-gray-700 font-medium mb-1">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your email address"
                     class=" px-3 py-2.5 outline-none w-full border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500">
             </div>
 
