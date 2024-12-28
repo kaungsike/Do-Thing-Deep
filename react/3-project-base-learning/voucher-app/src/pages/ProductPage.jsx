@@ -8,7 +8,7 @@ const ProductPage = () => {
     <section>
       <Container>
         <Breadcrumb currentPageTitle={"Product"} />
-        <ProductList/>
+        <ProductList />
       </Container>
     </section>
   )
