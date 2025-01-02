@@ -1,0 +1,65 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "product_name": "Apple",
+        "price": 100,
+        "created_at": "2021-01-01 00:00:00"
+      },
+      {
+        "id": 2,
+        "product_name": "Programming Book",
+        "price": 50,
+        "created_at": "2021-02-15 10:30:00"
+      },
+      {
+        "id": 3,
+        "product_name": "Laptop",
+        "price": 1200,
+        "created_at": "2021-03-20 14:45:00"
+      },
+      {
+        "id": 4,
+        "product_name": "Online Course Subscription",
+        "price": 200,
+        "created_at": "2021-04-10 08:00:00"
+      },
+      {
+        "id": 5,
+        "product_name": "Coding Keyboard",
+        "price": 75,
+        "created_at": "2021-05-05 17:20:00"
+      },
+      {
+        "id": 6,
+        "product_name": "External Hard Drive",
+        "price": 150,
+        "created_at": "2021-06-18 12:15:00"
+      },
+      {
+        "id": 7,
+        "product_name": "Cloud Storage Plan",
+        "price": 100,
+        "created_at": "2021-07-25 19:00:00"
+      },
+      {
+        "id": 8,
+        "product_name": "Monitor",
+        "price": 300,
+        "created_at": "2021-08-12 09:10:00"
+      },
+      {
+        "id": 9,
+        "product_name": "Mechanical Mouse",
+        "price": 50,
+        "created_at": "2021-09-07 16:35:00"
+      },
+      {
+        "id": 10,
+        "product_name": "AI Development Kit",
+        "price": 500,
+        "created_at": "2021-10-29 13:25:00"
+      }
+    ]
+  }
+  
