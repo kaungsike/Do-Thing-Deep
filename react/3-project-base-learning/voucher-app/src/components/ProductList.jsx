@@ -2,8 +2,20 @@ import React from 'react'
 import { TfiDropbox } from "react-icons/tfi";
 import { TfiTrash } from "react-icons/tfi";
 import { SlNote } from "react-icons/sl";
+import useSWR from 'swr';
 
 const ProductList = () => {
+
+    
+    // console.log(import.meta.env.VITE_API_URL);
+
+    const fetcher = (url) => fetch(url).then((res) => res.json());
+
+
+    const {data,error,isLoading} = useSWR(import.meta.env.VITE_API_URL,fetcher)
+
+    if(isLoading) return <p>Loading...</p>
+
     return (
         <>
             <div className="relative bg-white overflow-x-auto shadow-md sm:rounded-lg pt-5">
