@@ -1,23 +1,38 @@
 <?php
 
-echo "I'm index";
 
-echo "<pre>";
+require_once './functions.php';
+require_once "./router/web.php";
+// echo "I'm index";
+
+// echo "<pre>";
 
 // print_r($_SERVER);
 
 // echo $_SERVER ['REQUEST_URI']; 
 
-// print_r($_SERVER);
-if($_SERVER['PATH_INFO']=='/'){
-    require_once("/index.php");
-}
-elseif($_SERVER["PATH_INFO"]=='/about-us'){
-    require_once("./view/about.php");
-}elseif($_SERVER['PATH_INFO']=='/service'){
-    require_once("./view/service.php");
-}else{
-    require_once("./view/not-found.php");
-}
 
-?>
+$path = $_SERVER['PATH_INFO'] ?? "/";
+
+// if ($path) {
+//     $file  ="./index.php";
+// } elseif ($path === '/about-us') {
+//     $file  ="./view/about.php";
+// } elseif ($path === '/service') {
+//     $file  ="./view/service.php";
+// } else {
+//     $file ="./view/not-found.php";
+// }
+
+
+// require $file;
+
+// $route = [
+//     '/' => 'home',
+//     '/about-us' => 'about',
+//     '/services' => 'service',
+// ];
+
+// require_once $route[$path] ?? 'not-found';
+
+// view($route[$path]) ?? 'not-found';
