@@ -53,3 +53,6 @@ Route::get('/contact',[ItemController::class,'contact']);
 Route::get('/calculate/{w}/{h}',[ItemController::class,'calculate']);
 
 Route::get('/my',[MyController::class,'my']);
+
+
+Route::get('/sayHello',[MyController::class,'sayHello']);

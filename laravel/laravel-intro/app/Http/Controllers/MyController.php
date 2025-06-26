@@ -9,4 +9,8 @@ class MyController extends Controller
     public function my () {
         return  'Hello from MyController! This is a simple response to demonstrate the controller functionality.';
     }
+
+    public function sayHello () {
+        return "Hello Per Byar";
+    }
 }
