@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MyController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
@@ -52,7 +53,8 @@ Route::get('/contact',[ItemController::class,'contact']);
 
 Route::get('/calculate/{w}/{h}',[ItemController::class,'calculate']);
 
-Route::get('/my',[MyController::class,'my']);
+Route::get('/test',[TestController::class,'test']);
 
+Route::get('/my',[MyController::class,'my']);
 
 Route::get('/sayHello',[MyController::class,'sayHello']);
