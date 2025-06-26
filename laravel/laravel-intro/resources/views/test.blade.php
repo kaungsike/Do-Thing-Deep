@@ -19,12 +19,49 @@
 
     {{-- {!! $htmlString !!} --}}
 
-    <h3>Name Lists</h3>
+    {{-- <h3>Name Lists</h3>
     <ul>
-        @foreach ($nameLists as $name )
+        @foreach ($nameLists as $name)
             <li>{{$name}}</li>
         @endforeach
-    </ul>
+    </ul> --}}
+
+
+    {{-- @php
+        $count = 0;
+    @endphp
+
+    <ul>
+        @while ($count <= 5)
+            <li>
+                {{$count}}
+            </li>
+            @php
+                $count++;
+            @endphp
+        @endwhile
+    </ul> --}}
+
+    @php
+        $fruit = 'apple';
+    @endphp
+
+    @switch($fruit)
+        @case('mango')
+            <p>this is mango</p>
+        @break
+
+        @case('orange')
+            <p>this is orange</p>
+        @break
+
+        @case('apple')
+            <p>this is apple</p>
+        @break
+
+        @default
+            <p>this is not fruit</p>
+    @endswitch
 
 </body>
 
