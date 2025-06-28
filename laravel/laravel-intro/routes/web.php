@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MyController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
@@ -58,3 +59,19 @@ Route::get('/test',[TestController::class,'test']);
 Route::get('/my',[MyController::class,'my']);
 
 Route::get('/sayHello',[MyController::class,'sayHello']);
+
+// Route::get("/product",[ProductController::class,"index"]);
+
+// Route::post("/product/create",[ProductController::class,"create"]);
+
+// Route::post("/product",[ProductController::class,"store"]);
+
+// Route::get("/product/show",[ProductController::class,"show"]);
+
+// Route::get("/product",[ProductController::class,"index"]);
+
+// Route::get("/product",[ProductController::class,"index"]);
+
+// Route::get("/product",[ProductController::class,"index"]);
+
+Route::resource("product",ProductController::class);
