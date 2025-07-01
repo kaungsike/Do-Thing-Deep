@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class Test extends Model
+class SanTar extends Model
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -18,9 +18,8 @@ class Test extends Model
      */
     protected $fillable = [
         'name',
-        'description',
-        'quantity',
-        'price',
+        'phone',
+        'gender',
     ];
 
     /**
@@ -41,3 +40,4 @@ class Test extends Model
         ];
     }
 }
+
