@@ -11,7 +11,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return "index method is working";
     }
 
     /**
@@ -19,7 +19,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return "create method is working";
     }
 
     /**
@@ -35,7 +35,7 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return "show product id $id";
     }
 
     /**
@@ -43,7 +43,7 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return "edit product with id $id";
     }
 
     /**
