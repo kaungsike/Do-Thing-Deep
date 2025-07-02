@@ -27,104 +27,67 @@
                     </p>
                 </div>
 
-                <form>
+                <form method="post" action="{{ route('item.store') }}">
+                    @csrf
                     <!-- Section -->
                     <div
                         class="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-neutral-700 dark:first:border-transparent">
-                        <label for="af-payment-billing-contact"
-                            class="inline-block text-sm font-medium dark:text-white">
-                            Billing contact
+                        <label for="name" class="inline-block text-sm font-medium dark:text-white">
+                            Name
                         </label>
 
                         <div class="mt-2 space-y-3">
-                            <input id="af-payment-billing-contact" type="text"
+                            <input id="name" type="text" name="name"
                                 class="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                                placeholder="First Name">
-                            <input type="text"
-                                class="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                                placeholder="Last Name">
-                            <input type="text"
-                                class="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                                placeholder="Phone Number">
+                                placeholder="">
                         </div>
                     </div>
-                    <!-- End Section -->
-
-                    <!-- Section -->
                     <div
                         class="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-neutral-700 dark:first:border-transparent">
-                        <label for="af-payment-billing-address"
-                            class="inline-block text-sm font-medium dark:text-white">
-                            Billing address
+                        <label for="price" class="inline-block text-sm font-medium dark:text-white">
+                            Price
                         </label>
 
                         <div class="mt-2 space-y-3">
-                            <input id="af-payment-billing-address" type="text"
+                            <input id="price" type="number" name="price"
                                 class="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                                placeholder="Street Address">
-                            <input type="text"
-                                class="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                                placeholder="Apt, Syuite, Building (Optional)">
-                            <div class="flex flex-col sm:flex-row gap-3">
-                                <input type="text"
-                                    class="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                                    placeholder="Zip Code">
-                                <select
-                                    class="py-1.5 sm:py-2 px-3 pe-9 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-                                    <option selected>City</option>
-                                    <option>City 1</option>
-                                    <option>City 2</option>
-                                    <option>City 3</option>
-                                </select>
-                                <select
-                                    class="py-1.5 sm:py-2 px-3 pe-9 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-                                    <option selected>State</option>
-                                    <option>State 1</option>
-                                    <option>State 2</option>
-                                    <option>State 3</option>
-                                </select>
-                            </div>
+                                placeholder="">
                         </div>
                     </div>
-                    <!-- End Section -->
-
-                    <!-- Section -->
                     <div
                         class="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-neutral-700 dark:first:border-transparent">
-                        <label for="af-payment-payment-method" class="inline-block text-sm font-medium dark:text-white">
-                            Payment method
+                        <label for="stock" class="inline-block text-sm font-medium dark:text-white">
+                            Stock
                         </label>
 
                         <div class="mt-2 space-y-3">
-                            <input id="af-payment-payment-method" type="text"
+                            <input id="stock" type="number" name="stock"
                                 class="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                                placeholder="Name on Card">
-                            <input type="text"
-                                class="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                                placeholder="Card Number">
-                            <div class="flex flex-col sm:flex-row gap-3">
-                                <input type="text"
-                                    class="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                                    placeholder="Expiration Date">
-                                <input type="text"
-                                    class="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                                    placeholder="CVV Code">
-                            </div>
+                                placeholder="">
                         </div>
+                    </div>
+                    <div
+                        class="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-neutral-700 dark:first:border-transparent">
+                        <label for="description" class="inline-block text-sm font-medium dark:text-white">
+                            Description
+                        </label>
+
+                        <div class="mt-2 space-y-3">
+                            <textarea id="description" name="description"
+                                class="py-1.5 sm:py-2 px-3 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                                rows="6" placeholder=""></textarea>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 flex justify-end gap-x-2">
+                        <button type="submit"
+                            class="py-1.5 sm:py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                            Save
+                        </button>
                     </div>
                     <!-- End Section -->
                 </form>
 
-                <div class="mt-5 flex justify-end gap-x-2">
-                    <button type="button"
-                        class="py-1.5 sm:py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
-                        Cancel
-                    </button>
-                    <button type="button"
-                        class="py-1.5 sm:py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-                        Save changes
-                    </button>
-                </div>
             </div>
             <!-- End Card -->
         </div>
