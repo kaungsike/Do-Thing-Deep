@@ -13,7 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view("category.index", compact("categories"));
     }
 
     /**
@@ -34,7 +35,7 @@ class CategoryController extends Controller
         $category->description = $request->description;
         $category->save();
 
-        return back();
+        return redirect()->route("category.index");
     }
 
     /**
@@ -66,6 +67,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        if ($category) {
+            $category->delete();
+        }
+
+        return redirect()->route("category.index");
     }
 }

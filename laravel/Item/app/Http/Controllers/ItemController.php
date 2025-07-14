@@ -36,6 +36,8 @@ class ItemController extends Controller
         $item->stock = $request->stock;
         $item->description = $request->description;
         $item->save();
+
+        return redirect()->route("item.index");
     }
 
     /**
