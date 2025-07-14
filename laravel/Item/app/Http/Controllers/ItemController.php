@@ -51,7 +51,12 @@ class ItemController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $item = Item::find($id);
+        if ($item) {
+            return view('item.edit', compact('item'));
+        } else {
+            return redirect()->route('item.index');
+        }
     }
 
     /**
@@ -59,7 +64,17 @@ class ItemController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $item = Item::find($id);
+        if ($item) {
+            $item->name = $request->name;
+            $item->price = $request->price;
+            $item->stock = $request->stock;
+            $item->description = $request->description;
+            $item->update();
+            return redirect()->route('item.index');
+        } else {
+            return redirect()->route('item.index');
+        }
     }
 
     /**

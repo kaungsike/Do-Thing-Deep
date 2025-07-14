@@ -117,7 +117,7 @@
                                             <td class="size-px whitespace-nowrap">
                                                 <button type="button" class="block">
                                                     <span class="block px-6 py-2">
-                                                        <span class="text-sm text-gray-600 dark:text-neutral-400">US
+                                                        <span class="text-sm text-gray-600 dark:text-neutral-400">
                                                             {{ $item->name }}</span>
                                                     </span>
                                                 </button>
@@ -125,7 +125,7 @@
                                             <td class="size-px whitespace-nowrap">
                                                 <button type="button" class="block">
                                                     <span class="block px-6 py-2">
-                                                        <span class="text-sm text-gray-600 dark:text-neutral-400">US
+                                                        <span class="text-sm text-gray-600 dark:text-neutral-400">
                                                             {{ $item->price }}</span>
                                                     </span>
                                                 </button>
@@ -133,7 +133,7 @@
                                             <td class="size-px whitespace-nowrap">
                                                 <button type="button" class="block">
                                                     <span class="block px-6 py-2">
-                                                        <span class="text-sm text-gray-600 dark:text-neutral-400">US
+                                                        <span class="text-sm text-gray-600 dark:text-neutral-400">
                                                             {{ $item->stock }}</span>
                                                     </span>
                                                 </button>
@@ -141,7 +141,7 @@
                                             <td class="size-px whitespace-nowrap">
                                                 <button type="button" class="block">
                                                     <span class="block px-6 py-2">
-                                                        <span class="text-sm text-gray-600 dark:text-neutral-400">US
+                                                        <span class="text-sm text-gray-600 dark:text-neutral-400">
                                                             {{ $item->description }}</span>
                                                     </span>
                                                 </button>
@@ -150,10 +150,10 @@
                                             <td class="size-px whitespace-nowrap">
                                                 <div class="inline-flex rounded-md gap-1 shadow-sm">
                                                     <div>
-                                                        <button type="button"
+                                                        <a href="{{ route('item.edit', $item->id) }}"
                                                             class="py-1 px-2 text-xs inline-flex justify-center items-center gap-1 -ms-px first:rounded-s-md first:ms-0 last:rounded-e-md font-medium focus:z-10 border border-gray-200 bg-white text-gray-800 shadow-xs hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800 dark:focus:bg-neutral-800">
                                                             Edit
-                                                        </button>
+                                                        </a>
                                                     </div>
                                                     <form action="{{route('item.destroy', $item->id)}}" method="POST">
                                                         @csrf
