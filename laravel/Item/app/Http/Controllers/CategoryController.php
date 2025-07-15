@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use Reflector;
 
 class CategoryController extends Controller
 {
@@ -51,7 +52,11 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        if ($category) {
+            return view("category.edit", compact("category"));
+        } else {
+            return redirect()->route("category.index");
+        }
     }
 
     /**
@@ -59,7 +64,15 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        if ($category && $request) {
+            $category->name = $request->name;
+            $category->description = $request->description;
+            $category->save();
+
+            return redirect()->route("category.index");
+        } else {
+            return redirect()->route("category.index");
+        }
     }
 
     /**

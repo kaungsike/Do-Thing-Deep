@@ -11,7 +11,7 @@ class ItemByMyselfController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -19,7 +19,7 @@ class ItemByMyselfController extends Controller
      */
     public function create()
     {
-        return view('item-by-myself.item-by-myself');
+        return view('item-by-myself.create');
     }
 
     /**
