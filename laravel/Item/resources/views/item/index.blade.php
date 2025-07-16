@@ -205,7 +205,7 @@
                                                 <button type="button" class="block">
                                                     <span class="block px-6 py-2">
                                                         <span class="text-sm text-gray-600 dark:text-neutral-400">
-                                                            {{ $item->category_id }}</span>
+                                                            {{ $item->category->name }}</span>
                                                     </span>
                                                 </button>
                                             </td>
@@ -242,7 +242,7 @@
                                 class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200 dark:border-neutral-700">
                                 <div>
                                     <p class="text-sm text-gray-600 dark:text-neutral-400">
-                                        <span class="font-semibold text-gray-800 dark:text-neutral-200">9</span>
+                                        <span class="font-semibold text-gray-800 dark:text-neutral-200">{{count($items)}}</span>
                                         results
                                     </p>
                                 </div>
