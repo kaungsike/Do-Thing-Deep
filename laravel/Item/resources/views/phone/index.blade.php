@@ -78,15 +78,6 @@
                                             </div>
                                         </th>
 
-                                        <th scope="col" class="px-6 py-3 text-start">
-                                            <div class="flex items-center gap-x-2">
-                                                <span
-                                                    class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
-                                                    Name
-                                                </span>
-                                            </div>
-                                        </th>
-
 
                                         <th scope="col" class="px-6 py-3 text-start">
                                             <div class="flex items-center gap-x-2">
@@ -97,14 +88,16 @@
                                             </div>
                                         </th>
 
-                                        <th scope="col" class="px-6 py-3 text-start">
+                                                                                <th scope="col" class="px-6 py-3 text-start">
                                             <div class="flex items-center gap-x-2">
                                                 <span
                                                     class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
-                                                    People
+                                                    Name
                                                 </span>
                                             </div>
                                         </th>
+
+
 
                                         <th scope="col" class="px-6 py-3 text-start">
                                             <div class="flex items-center gap-x-2">
@@ -126,7 +119,7 @@
                                                 <button type="button" class="block">
                                                     <span class="block px-6 py-2">
                                                         <span
-                                                            class="font-mono text-sm text-blue-600 dark:text-blue-500">{{ $phone->id }}</span>
+                                                            class="font-mono text-sm text-blue-600 dark:text-blue-500">{{ $loop->iteration }}</span>
                                                     </span>
                                                 </button>
                                             </td>
@@ -138,11 +131,12 @@
                                                     </span>
                                                 </button>
                                             </td>
-                                            <td class="size-px whitespace-nowrap">
+
+                                                                                        <td class="size-px whitespace-nowrap">
                                                 <button type="button" class="block">
                                                     <span class="block px-6 py-2">
                                                         <span class="text-sm text-gray-600 dark:text-neutral-400">
-                                                            {{ 0 }}</span>
+                                                            {{ $phone->people->name}}</span>
                                                     </span>
                                                 </button>
                                             </td>
@@ -180,7 +174,7 @@
                                 <div>
                                     <p class="text-sm text-gray-600 dark:text-neutral-400">
                                         <span
-                                            class="font-semibold text-gray-800 dark:text-neutral-200">{{ count($peoples) }}</span>
+                                            class="font-semibold text-gray-800 dark:text-neutral-200"></span>
                                         results
                                     </p>
                                 </div>

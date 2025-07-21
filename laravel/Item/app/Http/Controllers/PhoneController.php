@@ -34,7 +34,7 @@ class PhoneController extends Controller
     {
         $phone = new Phone();
         $phone->phone_number = $request->phone_number;
-        $phone->person_id = $request->people_id;
+        $phone->people_id = $request->people_id;
         $phone->save();
 
         return view('phone.index');

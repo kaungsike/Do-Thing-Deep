@@ -10,7 +10,7 @@ class Phone extends Model
     /** @use HasFactory<\Database\Factories\PhoneFactory> */
     use HasFactory;
 
-    public function peoples() {
-        return $this->hasOne(People::class);
+    public function people() {
+        return $this->belongsTo(People::class);
     }
 }

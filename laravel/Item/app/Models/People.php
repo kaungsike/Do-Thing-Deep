@@ -11,6 +11,6 @@ class People extends Model
     use HasFactory;
 
     public function phone(){
-        return $this->belongsTo(Phone::class);
+        return $this->hasOne(Phone::class);
     }
 }

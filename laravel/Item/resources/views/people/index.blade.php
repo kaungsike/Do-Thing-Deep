@@ -117,7 +117,7 @@
                                                 <button type="button" class="block">
                                                     <span class="block px-6 py-2">
                                                         <span
-                                                            class="font-mono text-sm text-blue-600 dark:text-blue-500">{{ $people->id }}</span>
+                                                            class="font-mono text-sm text-blue-600 dark:text-blue-500">{{ $loop->iteration }}</span>
                                                     </span>
                                                 </button>
                                             </td>
@@ -133,7 +133,7 @@
                                                 <button type="button" class="block">
                                                     <span class="block px-6 py-2">
                                                         <span
-                                                            class="font-mono text-sm text-blue-600 dark:text-blue-500">{{ 0 }}</span>
+                                                            class="font-mono text-sm text-blue-600 dark:text-blue-500">{{ $people->phone->phone_number }}</span>
                                                     </span>
                                                 </button>
                                             </td>
