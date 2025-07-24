@@ -236,7 +236,9 @@
                                 </tbody>
                             </table>
                             <!-- End Table -->
-                            {{ $items->links('pagination::simple-tailwind') }}
+                           <div class="px-5 py-3">
+                             {{ $items->links('pagination::tailwind') }}
+                           </div>
 
 
                             <!-- Footer -->
