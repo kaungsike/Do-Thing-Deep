@@ -24,3 +24,5 @@ Route::resource("/customer",CustomerController::class);
 Route::resource("/people",PeopleController::class);
 
 Route::resource("/phone",PhoneController::class);
+
+Route::get('/search',[ItemController::class,'search'])->name('item.search');

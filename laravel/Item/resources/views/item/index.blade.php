@@ -25,8 +25,22 @@
                             <!-- Header -->
                             <div
                                 class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-neutral-700">
-                                <div>
+                                <div
+                                    class="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-neutral-700 dark:first:border-transparent">
+
+                                    <form method="GET" action="{{ route('item.search') }}">
+                                        <div class="mt-2 space-y-3 flex items-center gap-3">
+                                            <input id="stock" type="text" name="query"
+                                                class="py-1.5 mb-0 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                                                placeholder="">
+                                            <button type="submit"
+                                                class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                                                Search
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
+
 
                                 <div>
                                     <div class="inline-flex gap-x-2">
@@ -236,9 +250,9 @@
                                 </tbody>
                             </table>
                             <!-- End Table -->
-                           <div class="px-5 py-3">
-                             {{ $items->links('pagination::tailwind') }}
-                           </div>
+                            <div class="px-5 py-3">
+                                {{ $items->links('pagination::tailwind') }}
+                            </div>
 
 
                             <!-- Footer -->
