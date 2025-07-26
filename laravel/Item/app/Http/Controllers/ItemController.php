@@ -40,12 +40,14 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
+        return $request->image;
         $item = new Item();
 
         $item->name = $request->name;
         $item->price = $request->price;
         $item->stock = $request->stock;
         $item->description = $request->description;
+        $item->image = $request->image;
         $item->status = $request->status;
         $item->category_id = $request->category_id;
         $item->save();

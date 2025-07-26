@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer("price");
             $table->integer("stock");
             $table->text("description");
+            $table->text("image");
             $table->enum("status",["available","unavailable"]);
 
             $table->unsignedBigInteger("category_id");

@@ -18,16 +18,8 @@
         <div class="max-w-2xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
             <!-- Card -->
             <div class="bg-white rounded-xl shadow-xs p-4 sm:p-7 dark:bg-neutral-900">
-                <div class="text-center mb-8">
-                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-neutral-200">
-                        Payment
-                    </h2>
-                    <p class="text-sm text-gray-600 dark:text-neutral-400">
-                        Manage your payment methods.
-                    </p>
-                </div>
 
-                <form method="post" action="{{ route('item.store') }}">
+                <form method="post" action="{{ route('item.store') }}" enctype="multipart/form-data">
                     @csrf
                     <!-- Section -->
                     <div
@@ -85,9 +77,25 @@
                             class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
                             <option selected="">Select a category</option>
                             @foreach ($categories as $category)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
+                    </div>
+
+
+
+                    <div
+                        class="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-neutral-700 dark:first:border-transparent">
+                        <label for="image" class="inline-block mb-3 text-sm font-medium dark:text-white">
+                            Image
+                        </label>
+                        <label for="image" class="sr-only">Choose file</label>
+                        <input type="file" name="image" id="image"
+                            class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none
+    file:bg-gray-50 file:border-0
+    file:me-4
+    file:py-3 file:px-4
+   ">
                     </div>
 
 
