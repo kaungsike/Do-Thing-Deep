@@ -35,7 +35,7 @@
                                                 placeholder="">
                                             <button type="submit"
                                                 class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-                                                Search
+                                                Clear
                                             </button>
                                         </div>
                                     </form>
@@ -132,6 +132,15 @@
                                             <div class="flex items-center gap-x-2">
                                                 <span
                                                     class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
+                                                    Description
+                                                </span>
+                                            </div>
+                                        </th>
+
+                                        <th scope="col" class="px-6 py-3 text-start">
+                                            <div class="flex items-center gap-x-2">
+                                                <span
+                                                    class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
                                                     Status
                                                 </span>
                                             </div>
@@ -162,12 +171,12 @@
                                 <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
                                     @foreach ($items as $item)
                                         <tr
-                                            class="bg-white hover:bg-gray-50 dark:bg-neutral-900 dark:hover:bg-neutral-800">
+                                            class="bg-white hover:bg-gray-50 dark:bg-neutral-900 dark:hover:bg-neutral-800 h-[100px]">
                                             <td class="size-px whitespace-nowrap">
                                                 <button type="button" class="block">
                                                     <span class="block px-6 py-2">
                                                         <span
-                                                            class="font-mono text-sm text-blue-600 dark:text-blue-500">{{ $item->id }}</span>
+                                                            class="font-mono text-sm text-blue-600 dark:text-blue-500">{{ $loop->iteration }}</span>
                                                     </span>
                                                 </button>
                                             </td>
@@ -202,6 +211,10 @@
                                                             {{ $item->description }}</span>
                                                     </span>
                                                 </button>
+                                            </td>
+
+                                            <td class="size-px whitespace-nowrap">
+                                                <img class="w-full" src="{{ asset('storage/itemImage')."/".$item->image }}" alt="">
                                             </td>
 
                                             </td>

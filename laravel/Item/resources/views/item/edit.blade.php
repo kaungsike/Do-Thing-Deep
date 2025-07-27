@@ -27,7 +27,7 @@
                     </p>
                 </div>
 
-                <form method="post" action="{{ route('item.update', $item->id) }}">
+                <form method="post" action="{{ route('item.update', $item->id) }}" enctype="multipart/form-data">
 
                     @csrf
                     @method('PUT')
@@ -87,9 +87,29 @@
                         <select name="category_id" id="category_id"
                             class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
                             @foreach ($categories as $category)
-                                <option {{$item->category_id ==  $category->id ? "selected" : ""}} value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option {{ $item->category_id == $category->id ? 'selected' : '' }}
+                                    value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
+                    </div>
+
+
+                    <div class="mb-5">
+                        <img class="w-full" src="{{ asset('storage/itemImage') . '/' . $item->image }}" alt="">
+                    </div>
+
+                    <div
+                        class="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-neutral-700 dark:first:border-transparent">
+                        <label for="image" class="inline-block mb-3 text-sm font-medium dark:text-white">
+                            Image
+                        </label>
+                        <label for="image" class="sr-only">Choose file</label>
+                        <input type="file" name="image" id="image"
+                            class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none
+    file:bg-gray-50 file:border-0
+    file:me-4
+    file:py-3 file:px-4
+   ">
                     </div>
 
                     <div class="flex flex-col gap-3">

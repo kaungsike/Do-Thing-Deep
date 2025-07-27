@@ -8,13 +8,14 @@ use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
-    public function search(Request $request) {
+    public function search(Request $request)
+    {
 
         $query = $request->input('query');
 
-        $items = Item::where('name','LIKE',"%{$query}%")->orWhere('status','LIKE',"%{$query}%")->paginate(5);
+        $items = Item::where('name', 'LIKE', "%{$query}%")->orWhere('status', 'LIKE', "%{$query}%")->paginate(5);
 
-        return view("item.index",compact('items'));
+        return view("item.index", compact('items'));
     }
     /**
      * Display a listing of the resource.
@@ -23,7 +24,7 @@ class ItemController extends Controller
     {
         $items = Item::paginate(5);
         $categories = Category::all();
-        return view('item.index', compact('items','categories'));
+        return view('item.index', compact('items', 'categories'));
     }
 
     /**
@@ -32,7 +33,7 @@ class ItemController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('item.create',compact('categories'));
+        return view('item.create', compact('categories'));
     }
 
     /**
@@ -40,7 +41,14 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->image;
+
+        if ($request->image) {
+            $file = $request->image;
+            $newName = "item_image" . uniqid() . "." . $file->extension();
+
+            $file->storeAs('itemImage', $newName);
+        }
+
         $item = new Item();
 
         $item->name = $request->name;
@@ -50,6 +58,7 @@ class ItemController extends Controller
         $item->image = $request->image;
         $item->status = $request->status;
         $item->category_id = $request->category_id;
+        $item->image = $newName;
         $item->save();
 
         return redirect()->route("item.index");
@@ -71,7 +80,7 @@ class ItemController extends Controller
         $item = Item::find($id);
         $categories = Category::all();
         if ($item) {
-            return view('item.edit', compact('item','categories'));
+            return view('item.edit', compact('item', 'categories'));
         } else {
             return redirect()->route('item.index');
         }
@@ -82,6 +91,9 @@ class ItemController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
+
+
         $item = Item::find($id);
         if ($item) {
             $item->name = $request->name;
@@ -89,7 +101,16 @@ class ItemController extends Controller
             $item->stock = $request->stock;
             $item->description = $request->description;
             $item->status = $request->status;
+
             $item->category_id = $request->category_id;
+
+            if ($request->image) {
+                $file = $request->image;
+                $newName = "item_image" . uniqid() . "." . $file->extension();
+
+                $file->storeAs('itemImage', $newName);
+                $item->image = $newName;
+            }
             $item->update();
             return redirect()->route('item.index');
         } else {
