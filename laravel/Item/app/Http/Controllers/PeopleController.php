@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\People;
 use App\Http\Requests\StorePeopleRequest;
 use App\Http\Requests\UpdatePeopleRequest;
+use App\Models\Phone;
 
 class PeopleController extends Controller
 {
@@ -14,7 +15,8 @@ class PeopleController extends Controller
     public function index()
     {
         $peoples = People::all();
-        return view("people.index",compact("peoples"));
+        $phones = Phone::all();
+        return view("people.index",compact("peoples","phones"));
     }
 
     /**
@@ -22,7 +24,8 @@ class PeopleController extends Controller
      */
     public function create()
     {
-        return view("people.create");
+         $peoples = People::all();
+        return view('people.create', compact('peoples'));
     }
 
     /**
