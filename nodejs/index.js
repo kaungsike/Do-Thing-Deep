@@ -1,7 +1,10 @@
-const SuperHero = require('./super-hero');
+const math = require('./math');
 
-const superHero = new SuperHero();
-superHero.setName("Superman");
-console.log(superHero.getName());
+const { add, subtract } = math
 
+
+
+
+console.log(add(2,4))
+console.log(subtract(2,4))
 
