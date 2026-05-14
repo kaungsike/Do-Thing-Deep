@@ -1,17 +1,32 @@
-const EvenEmitter = require('node:events');
+const PizzaShop = require("./pizza-shop");
+const DrinkMachine = require("./drink-machine");
 
-const emitter = new EvenEmitter();
+const pizzaShop = new PizzaShop();
+const drinkMachine = new DrinkMachine();
 
-emitter.on("Order - pizza", (size, toppings) => {
+pizzaShop.on("order", (size, toppings) => {
     console.log("Order received!. Baking a " + size + " pizza with the following toppings: " + toppings.join(", "));
+    drinkMachine.serveDrink(size);
 });
 
-emitter.on("Order - pizza", (size) => {
-    if (size === "large") {
-        console.log("Adding extra cheese to the pizza");
-    }
-});
+pizzaShop.order("large", ["pepperoni", "mushrooms"]);
+pizzaShop.displayOrderNumber();
 
-console.log("Do work before event occurs in the system.")
+// const EvenEmitter = require('node:events');
 
-emitter.emit("Order - pizza", "large", ["pepperoni", "mushrooms"])
+// const emitter = new EvenEmitter();
+
+// emitter.on("Order - pizza", (size, toppings) => {
+//     console.log("Order received!. Baking a " + size + " pizza with the following toppings: " + toppings.join(", "));
+// });
+
+// emitter.on("Order - pizza", (size) => {
+//     if (size === "large") {
+//         console.log("Adding extra cheese to the pizza");
+//     }
+// });
+
+// console.log("Do work before event occurs in the system.")
+
+
+// emitter.emit("Order - pizza", "large", ["pepperoni", "mushrooms"])
