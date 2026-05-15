@@ -16,12 +16,36 @@
 
 // console.log("first")
 
+// const crypto = require("node:crypto");
+
+// const start = Date.now();
+// crypto.pbkdf2Sync("password", "salt", 100000, 512, "sha512");
+// crypto.pbkdf2Sync("password", "salt", 100000, 512, "sha512");
+// crypto.pbkdf2Sync("password", "salt", 100000, 512, "sha512");
+// crypto.pbkdf2Sync("password", "salt", 100000, 512, "sha512");
+// crypto.pbkdf2Sync("password", "salt", 100000, 512, "sha512");
+// console.log("Hashing password took " + (Date.now() - start) + " milliseconds");
+
 const crypto = require("node:crypto");
 
 const start = Date.now();
-crypto.pbkdf2Sync("password", "salt", 100000, 512, "sha512");
-crypto.pbkdf2Sync("password", "salt", 100000, 512, "sha512");
-crypto.pbkdf2Sync("password", "salt", 100000, 512, "sha512");
-crypto.pbkdf2Sync("password", "salt", 100000, 512, "sha512");
-crypto.pbkdf2Sync("password", "salt", 100000, 512, "sha512");
-console.log("Hashing password took " + (Date.now() - start) + " milliseconds");
+
+crypto.pbkdf2("password", "salt", 100000, 512, "sha512", () => {
+    console.log("1:", Date.now() - start);
+});
+
+crypto.pbkdf2("password", "salt", 100000, 512, "sha512", () => {
+    console.log("2:", Date.now() - start);
+});
+
+crypto.pbkdf2("password", "salt", 100000, 512, "sha512", () => {
+    console.log("3:", Date.now() - start);
+});
+
+crypto.pbkdf2("password", "salt", 100000, 512, "sha512", () => {
+    console.log("4:", Date.now() - start);
+});
+
+crypto.pbkdf2("password", "salt", 100000, 512, "sha512", () => {
+    console.log("5:", Date.now() - start);
+});
